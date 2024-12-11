@@ -22,13 +22,6 @@ const Signup = () => {
     e.preventDefault();
 
     await signup(inputs);
-    setInputs({
-      fullName: "",
-      username: "",
-      password: "",
-      confirmPassword: "",
-      gender: "",
-    });
   };
 
   return (
