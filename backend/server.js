@@ -7,10 +7,10 @@ import userRoutes from "./routes/userRoutes.js";
 import connectToMongoDB from "./db/connectDb.js";
 import cookieParser from "cookie-parser";
 import protectRoute from "./middleware/protectRoute.js";
+import { httpServer, app } from "./socket/socket.js";
 
 dotenv.config();
 
-const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json()); // to parse the incoming requests with JSON payload (from req.body)
@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   connectToMongoDB();
   console.log(`Server listening on port ${PORT}`);
 });
