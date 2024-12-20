@@ -15,7 +15,8 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io(`http://localhost:8000`, {
+      // Update the URL in production to the deployed backend URL
+      const socket = io(`https://chat-realtime-1rqe.onrender.com`, {
         query: { userId: authUser._id },
       });
 

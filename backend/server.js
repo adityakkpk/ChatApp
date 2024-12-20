@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import path from "path";
 
 import authRoutes from "./routes/authRoutes.js";
 import messageRoutes from "./routes/messageRoutes.js";
@@ -19,6 +20,14 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", protectRoute, messageRoutes);
 app.use("/api/users", protectRoute, userRoutes);
+
+const __dirname = path.resolve();
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+});
 
 app.get("/", (req, res) => {
   // root route http://localhost:8000
