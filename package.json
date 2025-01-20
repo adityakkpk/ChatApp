@@ -1,7 +1,7 @@
 {
-  "name": "as-a-programmer",
+  "name": "chat-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A real time chat application",
   "main": "server.js",
   "type": "module",
   "scripts": {
